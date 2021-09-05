@@ -9,16 +9,19 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
+// Objective: Make a Get Request to an external API that returns differents URL from Dogs
+// Parameters: Request and Response
+
 app.get('/rick', (req, res) => {
     const url = 'https://dog.ceo/api/breeds/image/random';
-    fetch(url)
-    .then(dogData => {
+    fetch(url)  
+    .then(dogData => {  
         if (dogData.ok) {
             console.log('Teste');
         }
         return dogData.json();
     })
-    .then((value) => {
+    .then((value) => { // Recover a data from previous then().
         console.log(value.message);
         res.send(value.message);
     })
